@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 class A{
 	
 }
-
+//default is eager which is initialized at the application start
 @Lazy
 @Component
 class B{
