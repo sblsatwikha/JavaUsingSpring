@@ -1,9 +1,19 @@
 package com.in28mts.learn_spring_boot.courses.bean;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
 public class Course {
+	
+	@Id
+	@GeneratedValue
 	private long id;
 	private String name;
 	private String author;
+	public Course() {
+	}
 	public Course(long id, String name, String author) {
 		super();
 		this.id = id;
