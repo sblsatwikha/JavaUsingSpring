@@ -1,10 +1,10 @@
 server:
-  port: 8080
+  port: 8082
 spring:
   application:
-    name: PRODUCT-SERVICE
+    name: ORDER-SERVICE
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:3306/productdb
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/orderdb
     username: root
     password: rootrootroot
     driverClassName: com.mysql.cj.jdbc.Driver
