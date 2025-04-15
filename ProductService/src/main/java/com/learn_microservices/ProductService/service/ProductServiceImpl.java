@@ -6,6 +6,7 @@ import com.learn_microservices.ProductService.repository.ProductRepository;
 import com.learn_microservices.ProductService.exception.ProductServiceCustomException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.objenesis.SpringObjenesis;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,5 +27,18 @@ public class ProductServiceImpl implements ProductService{
     public Product getProdById(Long id) {
         Product product = productRepository.findById(id).orElseThrow(()-> new ProductServiceCustomException("Product not found", "PRODUCT_NOT_FOUND"));
         return product;
+    }
+
+    @Override
+    public void reduceQuantity(long productId, long quantity) {
+        log.info("reduce quantity of {} for product id: {}", quantity, productId);
+        Product product = productRepository.findById(productId).orElseThrow(()-> new ProductServiceCustomException("Product not found", "PRODUCT_NOT_FOUND"));
+        if(product.getQuantity()<quantity){
+            throw new ProductServiceCustomException("Doesn't have sufficient quantity", "INSUFFICIENT_QUANTITY");
+        }
+        product.setQuantity(product.getQuantity()-quantity);
+        productRepository.save(product);
+        log.info("Prod Quantity updated");
+
     }
 }
