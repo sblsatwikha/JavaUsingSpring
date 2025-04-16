@@ -8,12 +8,24 @@ spring:
     import: configserver:http://localhost:9296
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
-        - id : ORDER-SERVICE
+        - id: ORDER-SERVICE
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order/**
-        - id : PRODUCT-SERVICE
+        - id: PRODUCT-SERVICE
           uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/product/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
