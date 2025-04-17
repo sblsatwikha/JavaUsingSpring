@@ -47,7 +47,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public OrderResponse getOrderDetails(long orderId) {
         Order order = orderRepository.findById(orderId).get();
-        ProductDetails productDetails = restTemplate.getForObject("http://PRODUCT-SERVICE/product/"+orderId, ProductDetails.class);
+        ProductDetails productDetails = restTemplate.getForObject("http://PRODUCT-SERVICE/product/"+order.getProductId(), ProductDetails.class);
         OrderResponse orderResponse = OrderResponse.builder()
                 .orderId(order.getId())
                 .orderStatus(order.getOrderStatus())
