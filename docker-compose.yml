@@ -31,4 +31,6 @@ services:
             configserver:
                 condition: service_healthy
     
+    
+# docker-compose -f docker-compose.yml up -d
         
