@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>service-registry</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>service-registry</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -64,7 +64,37 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.4.5</version>
+				<configuration>
+					<from>
+						<image>openjdk:21</image>
+					</from>
+					<to>
+						<image>registry.hub.docker.com/satwikhachilukuri/service_registry</image>
+						<tags>${project.version}</tags>
+					</to>
+				</configuration>
+			</plugin>
+			<!--		mvn clean install jib:build    -->
 		</plugins>
 	</build>
 
 </project>
+
+<!--maven settings -> user settings file -->
+<!--<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"-->
+<!--		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--		  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0-->
+<!--                              https://maven.apache.org/xsd/settings-1.0.0.xsd">-->
+<!--<servers>-->
+<!--	<server>-->
+<!--		<id>docker.io</id>-->
+<!--		<username>username@gmail.com</username>-->
+<!--		<password>passworddd</password>-->
+<!--	</server>-->
+<!--</servers>-->
+<!--</settings>-->
