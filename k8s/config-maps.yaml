@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: eureka-cm
 data:
-  eureka_server_address: http://eureka-0.eureka:8761/eureka}
+  eureka_server_address: "http://eureka-0.eureka:8761/eureka}"
 
 
 ---
@@ -14,3 +14,13 @@ metadata:
   name: config-cm
 data:
   config_url: "http://config-service-svc"
+
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-cm
+data:
+  hostname: "mysql-0.mysql"
