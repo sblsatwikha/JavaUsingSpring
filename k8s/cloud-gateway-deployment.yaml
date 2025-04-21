@@ -16,7 +16,7 @@ spec:
         image: satwikhachilukuri/cloud_gateway
         ports:
         - containerPort: 9090
-      env:
+        env:
           - name: EUREKA_SERVER_ADDRESS
             valueFrom:
               configMapKeyRef:
@@ -37,7 +37,7 @@ kind: Service
 metadata:
   name: cloud-gateway-svc
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: cloud-gateway-app
   ports:
